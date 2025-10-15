@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+const Color _primaryColor = Color(0xFF296239);
+
 class InterestedListPage extends StatefulWidget {
   const InterestedListPage({super.key});
 
@@ -63,7 +65,7 @@ class _InterestedListPageState extends State<InterestedListPage> {
             children: [
               Container(
                 decoration: BoxDecoration(
-                  color: Colors.pink.shade50,
+                  color: _primaryColor.withOpacity(0.12),
                   borderRadius: BorderRadius.circular(8),
                 ),
                 padding: const EdgeInsets.all(8),
@@ -136,7 +138,7 @@ class _InterestedListPageState extends State<InterestedListPage> {
                             // avatar avec initiales
                             CircleAvatar(
                               radius: 24,
-                              backgroundColor: Colors.grey.shade300,
+                              backgroundColor: _primaryColor,
                               child: Text(
                                 _initials(name),
                                 style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+const Color _primaryColor = Color(0xFF296239);
+
 class CompteProtocolePage extends StatefulWidget {
   const CompteProtocolePage({super.key});
 
@@ -88,7 +90,7 @@ class _CompteProtocolePageState extends State<CompteProtocolePage> {
                   children: [
                     CircleAvatar(
                       radius: 34,
-                      backgroundColor: Colors.deepPurple.shade400,
+                      backgroundColor: _primaryColor,
                       child: Text(_initials(name), style: const TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold)),
                     ),
                     const SizedBox(width: 12),

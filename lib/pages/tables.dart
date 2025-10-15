@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+const Color _primaryColor = Color(0xFF296239);
+
 // modèle simple pour une table (top-level, pas imbriqué)
 class _TableItem {
   String name;
@@ -143,7 +145,7 @@ class _TablesPageState extends State<TablesPage> {
                 children: [
                   Container(
                     padding: const EdgeInsets.all(8),
-                    decoration: BoxDecoration(color: Colors.pink.shade50, borderRadius: BorderRadius.circular(8)),
+                    decoration: BoxDecoration(color: _primaryColor.withOpacity(0.12), borderRadius: BorderRadius.circular(8)),
                     child: const Icon(Icons.table_chart, color: Colors.black87),
                   ),
                   const SizedBox(width: 12),
@@ -195,7 +197,7 @@ class _TablesPageState extends State<TablesPage> {
                             elevation: 2,
                             child: ListTile(
                               leading: CircleAvatar(
-                                backgroundColor: t.occupied ? Colors.redAccent : Colors.green,
+                                backgroundColor: t.occupied ? Colors.redAccent : _primaryColor,
                                 child: Text(
                                   t.name.split(' ').lastWhere((s) => s.isNotEmpty, orElse: () => '${index + 1}'),
                                   style: const TextStyle(color: Colors.white),
@@ -249,6 +251,7 @@ class _TablesPageState extends State<TablesPage> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => _showTableDialog(),
+        backgroundColor: _primaryColor,
         child: const Icon(Icons.add),
       ),
     );

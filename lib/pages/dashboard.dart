@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+const Color _primaryColor = Color(0xFF296239);
+
 class DashboardPage extends StatelessWidget {
   const DashboardPage({super.key});
 
@@ -24,25 +26,25 @@ class DashboardPage extends StatelessWidget {
             physics: const NeverScrollableScrollPhysics(),
             children: [
               _StatCard(
-                color: Colors.green.shade100,
+                color: _primaryColor.withOpacity(0.12),
                 icon: Icons.people,
                 title: "Nombre total d'invités",
                 value: totalInvites.toString(),
               ),
               _StatCard(
-                color: Colors.blue.shade100,
+                color: _primaryColor.withOpacity(0.18),
                 icon: Icons.check_circle,
                 title: "Nombre d'invités reçus",
                 value: invitesRecus.toString(),
               ),
               _StatCard(
-                color: Colors.red.shade100,
+                color: _primaryColor.withOpacity(0.14),
                 icon: Icons.hourglass_top,
                 title: "Nombre d'invités en attente",
                 value: invitesAttente.toString(),
               ),
               _StatCard(
-                color: Colors.orange.shade100,
+                color: _primaryColor.withOpacity(0.16),
                 icon: Icons.table_bar,
                 title: "Nombre de tables",
                 value: '1',
@@ -103,10 +105,10 @@ class DashboardPage extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         _LegendItem(
-                            color: Colors.redAccent, label: 'Invités en attente'),
+                            color: _primaryColor, label: 'Invités en attente'),
                         const SizedBox(height: 8),
                         _LegendItem(
-                            color: Colors.lightBlueAccent,
+                            color: _primaryColor.withOpacity(0.7),
                             label: 'Invités reçus'),
                         const SizedBox(height: 12),
                         Text(

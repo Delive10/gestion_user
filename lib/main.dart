@@ -5,6 +5,8 @@ import 'pages/scan_qr.dart';
 import 'pages/tables.dart';
 import 'pages/compte_protocole.dart';
 
+const Color _primaryColor = Color(0xFF296239);
+
 void main() {
   runApp(const MyApp());
 }
@@ -33,7 +35,19 @@ class MyApp extends StatelessWidget {
         //
         // This works for code too, not just values: Most code changes can be
         // tested with just a hot reload.
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: _primaryColor),
+        primaryColor: _primaryColor,
+        appBarTheme: const AppBarTheme(
+          backgroundColor: _primaryColor,
+          foregroundColor: Colors.white,
+          elevation: 2,
+        ),
+        bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+          backgroundColor: _primaryColor,
+          selectedItemColor: Colors.white,
+          unselectedItemColor: Colors.white70,
+          showUnselectedLabels: true,
+        ),
       ),
       home: const HomeWithBottomNav(), // changed to new home with bottom nav
     );
@@ -77,13 +91,16 @@ class _HomeWithBottomNavState extends State<HomeWithBottomNav> {
     return Scaffold(
       appBar: AppBar(
         title: Text(_titles[_currentIndex]),
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        backgroundColor: Theme.of(context).primaryColor,
       ),
       body: _pages[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
         onTap: _onTap,
         type: BottomNavigationBarType.fixed,
+        backgroundColor: Theme.of(context).bottomNavigationBarTheme.backgroundColor,
+        selectedItemColor: Theme.of(context).bottomNavigationBarTheme.selectedItemColor,
+        unselectedItemColor: Theme.of(context).bottomNavigationBarTheme.unselectedItemColor,
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.dashboard), label: 'Dashboard'),
           BottomNavigationBarItem(icon: Icon(Icons.people), label: 'Intéressés'),

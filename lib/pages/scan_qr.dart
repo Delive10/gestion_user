@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 import 'package:flutter/services.dart';
 
+const Color _primaryColor = Color(0xFF296239);
+
 class ScanQrPage extends StatefulWidget {
   const ScanQrPage({super.key});
 
@@ -89,7 +91,7 @@ class _ScanQrPageState extends State<ScanQrPage>
                 Container(
                   padding: const EdgeInsets.all(8),
                   decoration: BoxDecoration(
-                    color: Colors.pink.shade50,
+                    color: _primaryColor.withOpacity(0.12),
                     borderRadius: BorderRadius.circular(8),
                   ),
                   child: const Icon(Icons.qr_code_2, color: Colors.black87),
@@ -149,8 +151,7 @@ class _ScanQrPageState extends State<ScanQrPage>
                     height: previewSize,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(6),
-                      border: Border.all(
-                          color: Colors.redAccent.shade200, width: 3),
+                      border: Border.all(color: _primaryColor.withOpacity(0.9), width: 3),
                     ),
                   ),
 
@@ -158,22 +159,22 @@ class _ScanQrPageState extends State<ScanQrPage>
                   Positioned(
                     left: 10,
                     top: 10,
-                    child: _corner(),
+                    child: _corner(color: _primaryColor),
                   ),
                   Positioned(
                     right: 10,
                     top: 10,
-                    child: _corner(rotated: true),
+                    child: _corner(rotated: true, color: _primaryColor),
                   ),
                   Positioned(
                     left: 10,
                     bottom: 10,
-                    child: _corner(rotated: true, mirror: true),
+                    child: _corner(rotated: true, mirror: true, color: _primaryColor),
                   ),
                   Positioned(
                     right: 10,
                     bottom: 10,
-                    child: _corner(mirror: true),
+                    child: _corner(mirror: true, color: _primaryColor),
                   ),
 
                   // ligne animée de scan
@@ -223,7 +224,7 @@ class _ScanQrPageState extends State<ScanQrPage>
     );
   }
 
-  Widget _corner({bool rotated = false, bool mirror = false}) {
+  Widget _corner({bool rotated = false, bool mirror = false, Color color = _primaryColor}) {
     // simple marqueur d'angle
     return Transform(
       alignment: Alignment.center,
@@ -232,9 +233,9 @@ class _ScanQrPageState extends State<ScanQrPage>
         ..scale(mirror ? -1.0 : 1.0),
       child: Column(
         children: [
-          Container(width: 28, height: 4, color: Colors.redAccent),
+          Container(width: 28, height: 4, color: color),
           const SizedBox(height: 4),
-          Container(width: 4, height: 28, color: Colors.redAccent),
+          Container(width: 4, height: 28, color: color),
         ],
       ),
     );
@@ -249,7 +250,7 @@ class _ScanLinePainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final paint = Paint()
-      ..color = Colors.redAccent.withOpacity(0.9)
+      ..color = _primaryColor.withOpacity(0.95)
       ..strokeWidth = 3
       ..style = PaintingStyle.stroke
       ..strokeCap = StrokeCap.round;
